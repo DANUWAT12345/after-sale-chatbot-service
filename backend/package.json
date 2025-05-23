@@ -1,0 +1,18 @@
+{
+  "name": "after-sale-chatbot-service",
+  "version": "1.0.0",
+  "description": "Post-sale service chatbot for house developers using Gemini AI, Express.js, React, and AWS. with Line OA API",
+  "main": "src/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0"
+  }
+}
