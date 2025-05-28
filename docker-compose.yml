@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  db:
+    image: postgres:15
+    container_name: BaanService_db
+    restart: always
+    environment:
+      POSTGRES_USER: DANUWAT      # CHANGE THIS
+      POSTGRES_PASSWORD: Danuwat12345  # CHANGE THIS
+      POSTGRES_DB: BaanService_app_db   # CHANGE THIS
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+volumes:
+  postgres_data:
