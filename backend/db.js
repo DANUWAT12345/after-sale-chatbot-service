@@ -1,10 +1,13 @@
+// backend/db.js
 const { Pool } = require('pg');
+const appConfig = require('./config/appConfig'); // Import centralized config
+
 const pool = new Pool({
-  user: process.env.DB_USER,
-  host: process.env.DB_HOST,
-  database: process.env.DB_NAME,
-  password: process.env.DB_PASSWORD,
-  port: parseInt(process.env.DB_PORT, 10),
+  user: appConfig.db.user,
+  host: appConfig.db.host,
+  database: appConfig.db.database,
+  password: appConfig.db.password,
+  port: appConfig.db.port,
 });
 
 // Check if the connection is successful
