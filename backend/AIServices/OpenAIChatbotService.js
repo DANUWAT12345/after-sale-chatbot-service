@@ -1,12 +1,11 @@
 const { OpenAI } = require("openai");
-const systemPrompt = require('../Utils/systemPrompt');
+const { getSystemPromptWithTicket } = require('../Utils/systemPrompt');
 
 console.log("DEBUG OPENAI_API_KEY:", process.env.OPENAI_API_KEY);
 
 class NainAgentWithMemory {
   constructor(openaiApiKey) {
     this.openai = new OpenAI({ apiKey: openaiApiKey });
-    this.systemPrompt = systemPrompt;
     // Store conversation history per userId
     this.userHistories = new Map();
   }
@@ -35,8 +34,11 @@ class NainAgentWithMemory {
 
     const conversationHistory = this._getHistory(userId);
 
+    // Dynamically inject ticket number into system prompt
+    const systemPrompt = await getSystemPromptWithTicket();
+
     const messages = [
-      { role: "system", content: this.systemPrompt },
+      { role: "system", content: systemPrompt },
       ...conversationHistory
     ];
 

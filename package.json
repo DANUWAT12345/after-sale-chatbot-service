@@ -1,5 +1,13 @@
 {
   "dependencies": {
-    "openai": "^4.103.0"
+    "bcryptjs": "^3.0.2",
+    "bootstrap": "^5.3.6",
+    "jose": "^6.0.11",
+    "jsonwebtoken": "^9.0.2",
+    "openai": "^4.103.0",
+    "react-bootstrap": "^2.10.10"
+  },
+  "devDependencies": {
+    "@types/react-bootstrap": "^1.0.1"
   }
 }

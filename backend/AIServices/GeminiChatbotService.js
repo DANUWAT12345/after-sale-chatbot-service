@@ -1,5 +1,5 @@
 const config = require('../config/appConfig');
-const systemPrompt = require('../Utils/systemPrompt');
+const { getSystemPromptWithTicket } = require('../Utils/systemPrompt');
 
 class GeminiChatbotService {
   constructor() {
@@ -26,7 +26,8 @@ class GeminiChatbotService {
     this._addToHistory(userId, "user", userInput);
     const conversationHistory = this._getHistory(userId);
 
-    // Compose messages: system prompt + conversation history
+    // Dynamically inject ticket number into system prompt
+    const systemPrompt = await getSystemPromptWithTicket();
     const contents = [
       { role: "user", parts: [{ text: systemPrompt }] },
       ...conversationHistory.map(msg => ({

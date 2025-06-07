@@ -5,8 +5,9 @@ const db = require('../db.js'); // Assuming db.js connects using appConfig now
 const appConfig = require('../config/appConfig'); // Import centralized config
 
 // Import LINE webhook routes AFTER environment is loaded
-const lineWebhookRoutes = require('../routes/LineWebhookRoutes');
-const chatBotRouter = require('../routes/chatBotRouter'); 
+const lineWebhookRoute = require('../routes/LineWebhookRoutes');
+const ticketRoutes = require('../routes/ticketRoutes');
+const adminRoutes = require('../routes/adminUserRoutes');  
 
 class ServerFacade {
   constructor() {
@@ -33,8 +34,9 @@ class ServerFacade {
       res.status(200).json({ status: 'UP', message: 'Backend is running!' });
     });
 
-    this.app.use('/api/line', lineWebhookRoutes);
-    this.app.use('/api/chatbot', chatBotRouter);
+    this.app.use('/api/line', lineWebhookRoute);
+    this.app.use('/api/tickets', ticketRoutes);
+    this.app.use('/api/admin-user', adminRoutes);
   }
 
   connectToDatabase() {
