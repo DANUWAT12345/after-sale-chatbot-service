@@ -1,8 +1,6 @@
 const { OpenAI } = require("openai");
 const { getSystemPromptWithTicket } = require('../Utils/systemPrompt');
 
-console.log("DEBUG OPENAI_API_KEY:", process.env.OPENAI_API_KEY);
-
 class NainAgentWithMemory {
   constructor(openaiApiKey) {
     this.openai = new OpenAI({ apiKey: openaiApiKey });

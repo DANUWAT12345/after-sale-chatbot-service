@@ -1,8 +1,8 @@
 // backend/src/server.js
 const express = require('express');
 const cors = require('cors');
-const db = require('../db.js'); // Assuming db.js connects using appConfig now
-const appConfig = require('../config/appConfig'); // Import centralized config
+const db = require('../db.js');
+const appConfig = require('../config/appConfig'); 
 
 // Import LINE webhook routes AFTER environment is loaded
 const lineWebhookRoute = require('../routes/LineWebhookRoutes');
@@ -52,14 +52,26 @@ class ServerFacade {
   startServer() {
     this.app.listen(this.port, () => {
       console.log(`Backend server is running on http://localhost:${this.port}`);
+      console.log('Server started successfully.')
     });
   }
 
   start() {
+    console.log('Starting middleware configuration...');
     this.configureMiddlewares();
+    console.log('Middleware configuration complete.');
+
+    console.log('Configuring routes...');
     this.configureRoutes();
+    console.log('Routes configured.');
+
+    console.log('Connecting to database...');
     this.connectToDatabase();
-    this.startServer();
+    console.log('Database connection completed.');
+
+    console.log('Starting server...');
+    this.startServer(); 
+    ;
   }
 }
 

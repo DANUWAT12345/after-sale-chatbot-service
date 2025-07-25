@@ -5,9 +5,9 @@ services:
     container_name: BaanService_db
     restart: always
     environment:
-      POSTGRES_USER: DANUWAT      # CHANGE THIS
-      POSTGRES_PASSWORD: Danuwat12345  # CHANGE THIS
-      POSTGRES_DB: BaanService_app_db   # CHANGE THIS
+      POSTGRES_USER: DANUWAT
+      POSTGRES_PASSWORD: Danuwat12345
+      POSTGRES_DB: BaanService_app_db
     ports:
       - "5432:5432"
     volumes:

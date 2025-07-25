@@ -1,11 +1,13 @@
-// backend/routes/lineWebhookRoutes.js (consistent naming)
-const express = require("express");
+// LINE Webhook Routes
+const express = require('express');
 const lineWebhookController = require('../controllers/lineWebhookController');
 
 const router = express.Router();
 
-// Use raw body for signature validation
-router.use("/webhook", express.raw({ type: "application/json" }));
-router.post("/webhook", lineWebhookController.handleWebhook);
+// Apply raw body parser for signature validation on webhook endpoint
+router.use('/webhook', express.raw({ type: 'application/json' }));
+
+// Handle incoming webhook POST requests
+router.post('/webhook', lineWebhookController.handleWebhook);
 
 module.exports = router;
